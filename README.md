@@ -116,7 +116,7 @@ You should now be back in the Garage and see your vehicle.
 
 Please expand the left-hand nav bar and select **Models**.
 
-## Step 3: Model List Page -A
+## Step 3: Model List Page -C
 The **Models** page shows a list of all the models you have created and the status of each model. If you want to create models, this is where you start the process. Similarly, from this page you can download, clone, and delete models. If this is the first time you are using the service and have just created your resources, you should see a few sample models in your account.
 
 ![Model List Page](img/model_list.png)
@@ -126,7 +126,7 @@ You can create a model by selecting **Create model**. Once you have created a mo
 To create your model select **Create model**.
 
 
-## Step 4: Create model -J
+## Step 4: Create model -A
 This page gives you the ability to create an RL model for AWS DeepRacer and start training the model. We are going to create a model that can be used by the AWS DeepRacer car to autonomously drive around a virtual race track. We need to select the specific race track we want to train on, specify the reward function that will be used to incentivize our desired driving behavior during training, configure hyperparameters, and specify our stopping conditions. 
 
 ![Model Name](img/create_model_1_model_name.png)
