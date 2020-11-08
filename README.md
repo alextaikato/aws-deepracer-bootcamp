@@ -1,6 +1,5 @@
 # ANZ Reinforcement machine learning "crash" course
 
-Welcome to the second ANZ Summer of Tech Bootcamp for 2020!
 
 # Introduction -A
 
