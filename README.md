@@ -2,7 +2,7 @@
 
 Welcome to the second ANZ Summer of Tech Bootcamp for 2020!
 
-# Introduction -J
+# Introduction -A
 
 To get started, I want to introduce the [AWS DeepRacer](https://www.deepracerleague.com) league. DeepRacer is a reinforcement maching learning based global autonomous car racing league. Anyone can participate in the league online and in person person events are held regularly as well. 
 
@@ -22,11 +22,11 @@ Earlier this year in February [@Alex](https://github.com/alextaikato), [@Chris](
  
 # How this session will run -A
 
-- Everyone has an opportunity to participate - This is intended to be a hands on session. After some initial discussion as one group together, we can split out into teams using the breakout rooms feature in Zoom, or work individually to develop our own machine learning models and see how these work in simulations.
+- Everyone has an opportunity to participate - This is intended to be a hands on session. We will go over setting up your deepracer environment and walk you through setting up your first model. 
 
 - Asking questions - The aim of this session is to be as interactive as possible, please don’t hold questions to the end, I’m happy to answer questions as we go :)
 
-- Resources - All materials from this workshop will be publicly available on my github and a link provided in chat at the end of our session.
+- Resources - All materials from this workshop will be publicly available on github and a link provided in chat at the end of our session.
 
 - Technology - Today we'll be using AWS to get hands on, it was a pre-requisite to register for an AWS account. If you don't have one already, please register now as we start our walkthrough.
 
@@ -36,7 +36,7 @@ Earlier this year in February [@Alex](https://github.com/alextaikato), [@Chris](
 &nbsp;
 
 # Section 1: Training a model together
-## Step 1: Lets login to the AWS DeepRacer service and create resources -J
+## Step 1: Lets login to the AWS DeepRacer service and create resources -C
 
 To get underway we'll complete this first walkthrough together as a group, just to give you an idea how DeepRacer works. Once we've completed the walkthrough you'll have time to work on a model as a team or individually.
 
@@ -116,7 +116,7 @@ You should now be back in the Garage and see your vehicle.
 
 Please expand the left-hand nav bar and select **Models**.
 
-## Step 3: Model List Page -J
+## Step 3: Model List Page -A
 The **Models** page shows a list of all the models you have created and the status of each model. If you want to create models, this is where you start the process. Similarly, from this page you can download, clone, and delete models. If this is the first time you are using the service and have just created your resources, you should see a few sample models in your account.
 
 ![Model List Page](img/model_list.png)
@@ -389,10 +389,10 @@ Note 25 to 35 minutes of lab time should have elapsed by this point.
 
 **Important to note** that once you have started training a model using a particular agent (car), the settings of the agent remains with the model, even if you go and change the agent in the Garage. Thus changes to your agents will not affect your existing models, but will only affect future models that you start training.
 
-# Section 2: Competing in the ANZ DeepRacer Virtual Race -A
+# Section 2: Competing in the ANZ DeepRacer Race -A
 
-Now that you have a model created and have done some training, come along and race your model in a virtual race limited to attendees of this workshop.
+Now that you have a model created and have done some training, complete your training of these models over the next few days. Feel free to search online for what works and what doesn't and don't be scared to experiment with it
 
-First, second and third places will be awarded some sweet prizes so give it a go!
+We will have some prizes on the day for the winning teams so bring your A game!
 
-You can enter your model in the race here: https://console.aws.amazon.com/deepracer/home#raceToken/YNzi5qRaTgOQjNjVmgCDFA
+Bring your models along on race day and we can transfer them over to the car to test them out.
