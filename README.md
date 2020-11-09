@@ -57,7 +57,7 @@ While the stack is being created we can call out items in the left-hand navigati
 
 Let's dive into the Garage first, as this is where we will customize the car we will use during model training. Please expand the left hand navigation bar and select **Garage**.
 
-## Step 2: Garage -C
+## Step 2: Garage -A
 When you visit the **Garage** for the first time you will be presented with an overview of the Garage, which you can revisit using the Info bar on the right. The Garage allows you to create and customize your own virtual cars that you will then use to train models for. By default ,the Garage contains the **The Original DeepRacer**. The original DeepRacer uses a single front-facing camera, a 3 layer convolutional neural network, and a maximum speed action space of 1m/s.
 
 Note: If you have used AWS DeepRacer before, the action space speeds have been updated to provide a closer match to real world speeds. A quick rule of thumb is to take your old model's speed and divide it by 3. This gets you to the current console value.
