@@ -80,7 +80,7 @@ Please select only **Camera** as sensor and **3 Layer CNN** as Neural Network.
 
 Please select **Next**.
 
-### 2.2 Action space
+### 2.2 Discreet action space
 
 ![Garage step 2](img/action-space.png)
 
@@ -99,6 +99,14 @@ Based on the above example the final action space will include 15 discrete actio
 - Our experiments have shown that models with a faster maximum speed take longer to converge than those with a slower maximum speed. Please see observations in the hyperparameter section below if you do go with a speed faster than 1m/s.
 - You also have to keep physics in mind. If you try train a model at faster than 3 m/s, you may see your car spin out on corners, which will increase the time to convergence of your model.
 
+### 2.2.2 Continuous Action Space
+Much like the discreet action space, the continuous action space lets you set the range of motion and speeds for your vehicle. 
+
+The difference being that as opposed to having a defined number of actions, the continuous action space lets your car explore all of the points between the defined values. This will mean that your vehicle can develop smoother actions but also makes it more sensitive to your defined reward function. If your reward function isn't correctly optimised, a continuous action space will take longer to train. 
+
+If you use PPO you can select either discreet or continuous actions, but if you are using SAC you have to use continuous.
+
+For the purpose of this workshop, we are going to be working with a discreet action space. 
 
 Please select **Next**.
 
@@ -330,9 +338,19 @@ Scroll down and select **Next**.
 ##### 4.3.2.1 Training algorithm
 
 
-For the time being you can only use the PPO (Proximal Policy Optimization) algorithm in the console.
+You can choose between the PPO and SAC algorithms to train your model. In the past there was only PPO and I have not used SAC for any models to date. 
 
-##### 4.3.2.2 Hyperparameters (formerly called algorithm settings)
+Policies are the mappings between states and actions, where the state is the current world-view the vehicle has and the action is what the vehicle does (steering angle, speed).
+
+There are 3 key differences between SAC and PPO:
+1. The first is that the implementation of SAC on the AWS DeepRacer console only allows you to select continuous action space.
+
+2. The second and sharper contrast between PPO and SAC is in how they leverage the information learned by the policy while exploring the environment between training iterations. PPO uses on-policy learning, which means that we learn the value function from observations made by the current policy exploring the environment. SAC, on the other hand, uses off-policy learning, which means it can use observations made by previous policies exploring the environment. The trade-off between off-policy and on-policy learning tends to be stability vs. data efficiency. On-policy algorithms tend to be more stable but are more data-hungry, whereas off-policy algorithms tend to be more unstable but more data efficient.
+
+3. The third and final difference is how PPO and SAC use entropy. In this case, entropy is a measure of the uncertainty in the policy, so it can be interpreted as a measure of how confident a policy is at choosing an action for a given observation. A policy with low entropy is very confident at choosing an action, whereas a policy with high entropy is unsure of which action to choose. The PPO algorithm uses entropy regularization. Entropy regularization encourages the agent to explore by preventing it from settling on a specific policy.For SAC, instead of using entropy as a regularizer, we change the objective of the RL model to maximize not only total reward but also entropy. This entropy maximization makes SAC a unique RL algorithm. Entropy maximization has similar benefits to using the entropy as a regularizer, such as incentivizing wider exploration and avoiding convergence to a bad policy.Entropy maximisation has the advantage that it will give up on unpromosing behaviour. SAC policies tend to explore the environment more because high entropy means that we’re unsure which action to take. However, because we also maximize for total reward, we’re taking unsure actions as we observe the environment close to our desired behavior. This can end up causing a "Jitter" effect as your car struggles to make the right decision.
+
+
+##### 4.3.2.3 Hyperparameters (formerly called algorithm settings)
 
 
 This section specifies the hyperparameters that will be used by the reinforcement learning algorithm during training. Hyperparameters are used to improve training performance.
@@ -362,6 +380,8 @@ The default parameters work well for time-trial models where the max speed is le
 | Discount factor                          | A factor that specifies how much the future rewards contribute to the expected cumulative reward. The larger the discount factor, the farther out the model looks to determine expected cumulative reward and the slower the training. With a discount factor of 0.9, the vehicle includes rewards from an order of 10 future steps to make a move. With a discount factor of 0.999, the vehicle considers rewards from an order of 1000 future steps to make a move. The recommended discount factor values are 0.99, 0.999 and 0.9999.                                         |
 | Loss type                                | The loss type specified the type of the objective function (cost function) used to update the network weights. The Huber and Mean squared error loss types behave similarly for small updates. But as the updates become larger, the Huber loss takes smaller increments compared to the Mean squared error loss. When you have convergence problems, use the Huber loss type. When convergence is good and you want to train faster, use the Mean squared error loss type.                                                                                                      |
 | Number of episodes between each training |  This parameter controls how much experience the car should obtain between each model training iteration. For more complex problems which have more local maxima, a larger experience buffer is necessary to provide more uncorrelated data points. In this case, training will be slower but more stable. The recommended values are 10, 20 and 40.                           |
+
+| SAC alpha |  You can tune the amount of entropy to use in SAC with the hyperparameter SAC alpha, with a value between 0.0 and 1.0. The maximum value of the SAC alpha uses the whole entropy value of the policy and favors exploration. The minimum value of SAC alpha recovers the standard RL objective and there is no entropy bonus to incentivize the exploration. A good SAC alpha value to kick off your first model is 0.5. Then you can tune this hyperparameter accordingly as you iterate on your models.                                                         |
 
 #### Observations: playing with max speed and hyperparameters to get convergence
 
